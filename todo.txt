@@ -1,1 +1,3 @@
 pandoc templates for md -> latex and md -> beamer
+
+* fix lists and sublists

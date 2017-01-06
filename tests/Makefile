@@ -1,2 +1,8 @@
-%.pdf: %.md
-	pandoc $< --latex-engine=lualatex --template=../templates/x.latex -o $@
+ENGINE=lualatex
+TEMPLATE=../templates/x.latex
+
+NGN=--latex-engine=$(ENGINE)
+TPL=--template=$(TEMPLATE)
+
+%.pdf: %.md $(TEMPLATE)
+	pandoc $< $(NGN) $(TPL) -o $@
