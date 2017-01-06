@@ -2,6 +2,9 @@
 title: Basic test for pandoc
 subtitle: How well does it work ?
 author: Clément Durand
+
+numbersections: true
+toc: true
 ...
 
 # About titles
@@ -10,7 +13,7 @@ author: Clément Durand
 
 Hello World
 
-![A normal image](normal.jpg)
+![A normal image](normal.jpg){width=70%}
 
 Another line of text.
 
@@ -18,7 +21,7 @@ Another line of text.
 
 # Let's try that
 
-## Lists
+## Lists {#lists}
 
 ### Simple
 
@@ -54,7 +57,11 @@ test            test           test
 red             green          blue
 
 
-| Left | Center | Right |
-|:---- |:------:| -----:|
-| test | test   | test  |
-| a    | b      | c     |
+| Left | *Center* | Right |
+| :--- | :----:   | ----: |
+| test | test     | test  |
+| a    | b        | c     |
+
+## References
+
+The section [lists](#lists) tackles many issues.

@@ -36,6 +36,29 @@ $if(CJKmainfont)$
     \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
 $endif$
 \fi
+\usepackage[unicode=true]{hyperref}
+$if(colorlinks)$
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+$endif$
+\hypersetup{
+$if(title-meta)$
+            pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+            pdfauthor={$author-meta$},
+$endif$
+$if(keywords)$
+            pdfkeywords={$for(keywords)$$keywords$$sep$; $endfor$},
+$endif$
+$if(colorlinks)$
+            colorlinks=true,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+            citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+$else$
+            pdfborder={0 0 0},
+$endif$
+            breaklinks=true}
 $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
@@ -79,7 +102,40 @@ $endif$
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+$if(subparagraph)$
+$else$
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+$endif$
+$if(dir)$
+\ifxetex
+  % load bidi as late as possible as it modifies e.g. graphicx
+  $if(latex-dir-rtl)$
+  \usepackage[RTLdocument]{bidi}
+  $else$
+  \usepackage{bidi}
+  $endif$
+\fi
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+$endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
