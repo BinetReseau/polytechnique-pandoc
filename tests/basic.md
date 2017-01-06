@@ -18,7 +18,31 @@ Another line of text.
 
 # Let's try that
 
-1. What about lists ?
-  - Does it really work ?
-  - It might.
-1. Let's see ...
+## Lists
+
+### Simple
+
+- first
+- second
+- third
+
+1. first
+2. second
+3. third
+
+### Composed
+
+-   a
+    -   aa
+    -   ab
+-   b
+
+1.  a
+    -   aa
+    -   ab
+        1.  aba
+        1.  abb
+        1.  abc
+    -   ac
+1.  b
+
