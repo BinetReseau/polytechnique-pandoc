@@ -46,3 +46,15 @@ Another line of text.
     -   ac
 1.  b
 
+## Tables
+
+Left-aligned      Centered      Right-aligned
+-------------   ------------   --------------
+test            test           test
+red             green          blue
+
+
+| Left | Center | Right |
+|:---- |:------:| -----:|
+| test | test   | test  |
+| a    | b      | c     |
