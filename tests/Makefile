@@ -1,8 +1,13 @@
 ENGINE=lualatex
-TEMPLATE=../templates/x.latex
-
+FORMAT=latex
+TEMPLATE=x
+TPLFILE=../templates/$(TEMPLATE).$(FORMAT)
 NGN=--latex-engine=$(ENGINE)
-TPL=--template=$(TEMPLATE)
+TPL=--template=$(TPLFILE)
+FMT=-t $(FORMAT)
 
-%.pdf: %.md $(TEMPLATE)
-	pandoc $< $(NGN) $(TPL) -o $@
+%.pdf: %.md $(TPLFILE)
+	pandoc $< $(NGN) $(TPL) $(FMT) -o $@
+
+%.tex: %.md $(TPLFILE)
+	pandoc $< $(NGN) $(TPL) $(FMT) -o $@
