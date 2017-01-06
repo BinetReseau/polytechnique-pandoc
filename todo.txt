@@ -1,0 +1,1 @@
+pandoc templates for md -> latex and md -> beamer
