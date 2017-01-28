@@ -38,8 +38,6 @@ $endif$
 \fi
 
 \usepackage[hyphens]{url}
-\usepackage{hyperref}
-
 \usepackage[unicode=true]{hyperref}
 $if(colorlinks)$
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
